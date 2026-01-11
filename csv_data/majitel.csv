@@ -1,8 +1,0 @@
-id,jmeno,prijmeni,email,rozpocet,aktivni
-1,Jan,Novak,novak@email.cz,50000000,1
-2,Petr,Svoboda,svoboda@seznam.cz,120000000,1
-3,Martin,Kucera,kucera@firm.cz,500000,0
-4,Ivan,Kozak,kozak@sport.sk,30000000,1
-5,Jozef,Varga,varga@mail.sk,15000000,1
-6,Andrej,Danko,danko@neaktivni.sk,0,0
-7,Marek,Cerny,cerny@klub.cz,25000000,1
