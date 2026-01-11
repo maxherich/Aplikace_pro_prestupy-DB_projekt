@@ -3,5 +3,5 @@
   "port": 3306,
   "user": "biguser",
   "password": "student",
-  "database": "fotbalovu_trh"
+  "database": "fotbalovy_trh"
 }
