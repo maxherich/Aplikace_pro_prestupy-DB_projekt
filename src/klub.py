@@ -21,19 +21,18 @@ class Klub_Repository:
 
     def smazat(self, nazev):
         sql = f"DELETE FROM klub WHERE nazev = %s"
-        values = (nazev)
+        values = (nazev,)
         cursor.execute(sql, values)
         conn.connection.commit()
 
-    def vyhledat(self, nazev):
-        sql = f"SELECT * FROM klub WHERE nazev = %s"
-        values = (nazev)
-        cursor.execute(sql, values)
-        conn.connection.commit()
-        return cursor.fetch()
+    def seznam_klubu(self):
+        sql = f"SELECT * FROM klub"
+        cursor.execute(sql)
+        return cursor.fetchall()
 
-    def import_z_csv(self):
-        with open("csv_data/klub.csv", "r", encoding='utf-8') as file:
+    def import_z_csv(self, cesta_k_souboru):
+        with open(cesta_k_souboru, "r", encoding='utf-8') as file:
             reader = csv.reader(file)
+            next(reader, None)
             for row in reader:
-                self.pridat(row[1], row[2], row[3])
+                self.pridat(row[0], row[1], row[2])
