@@ -27,21 +27,14 @@ class Majitel_Repository:
         cursor.execute(sql, values)
         conn.connection.commit()
 
-    def vyhledat(self, jmeno, prijmeni):
-        sql = f"SELECT * FROM majitel WHERE jmeno = %s AND prijmeni = %s "
-        values = (jmeno, prijmeni)
-        cursor.execute(sql, values)
-        conn.connection.commit()
-        return cursor.fetch()
-
     def aktivni_majitele(self):
-        sql = f"SELECT * FROM seznam_aktivnich_majitelu"
+        sql = "SELECT * FROM seznam_aktivnich_majitelu"
         cursor.execute(sql)
-        conn.connection.commit()
         return cursor.fetchall()
 
-    def import_z_csv(self):
-        with open("csv_data/majitel.csv", "r", encoding='utf-8') as file:
+    def import_z_csv(self, cesta_k_souboru):
+        with open(cesta_k_souboru, "r", encoding='utf-8') as file:
             reader = csv.reader(file)
+            next(reader, None)
             for row in reader:
-                self.pridat(row[1], row[2], row[3], row[4], row[5])
+                self.pridat(row[0], row[1], row[2], row[3], row[4])
